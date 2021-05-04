@@ -21,24 +21,24 @@
 	</properties>
 	<dependencies>
 		<dependency>
-		    <groupId>org.junit.jupiter</groupId>
-		    <artifactId>junit-jupiter-engine</artifactId>
-		    <version>5.7.0</version>
-		    <scope>test</scope>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.junit.jupiter</groupId>
-		    <artifactId>junit-jupiter-api</artifactId>
-		    <version>5.7.0</version>
-		    <scope>test</scope>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		    <version>5.3.3</version>
-		    <scope>test</scope>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.3.3</version>
+			<scope>test</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -73,7 +73,7 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -109,6 +109,16 @@
 			<artifactId>junit-jupiter</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- configuracao do bean balidation - validação da entrada de usuario -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.13.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator-annotation-processor</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -117,7 +127,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>

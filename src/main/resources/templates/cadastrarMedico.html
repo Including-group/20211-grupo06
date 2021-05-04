@@ -3,11 +3,41 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Insert title here</title>
+    <title>Cadastro de Medicos</title>
+    <script type="text/javascript"> function consulta() { window.open("/sig/medicos"); } </script> 
 </head>
 
 <body>
-    <h1> Cadastrar médico </h1> <img th:src="@{/images/cps.jpg}" />
+    <h1> Cadastrar médico </h1>
+    <form action="#" th:action="@{/sig/medicos}" th:object="${medico}" method="post">
+    	
+    	<label for="Nome" class="col-form-label">Nome</label>
+    	<input type="text" class="form-control" id="nome" placeholder="nome"> 
+    	<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="textdanger"></span>
+    	<br>
+    	
+    	<label for="cpf" class="col-form-label">CRM</label>
+    	<input type="text" th:field="*{crm}" class="form-control" id="crm" placeholder="CRM"> 
+    	<span th:if="${#fields.hasErrors('crm')}" th:errors="*{crm}" class="textdanger"></span>
+    	<br>
+    	
+    	<label for="cpf" class="col-form-label">CPF</label>
+    	<input type="text" th:field="*{cpf}" class="form-control" id="cpf" placeholder="CPF"> 
+    	<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="textdanger"></span>
+    	<br>
+    	
+    	<label for="email" class="col-form-label">Email</label>
+    	<input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email"> 
+    	<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="textdanger"></span>
+    	<br>
+    	
+    	<label for="especialidade" class="col-form-label">Especialidade</label>
+    	<input type="text" th:field="*{especialidade}" class="form-control" id="especialidade" placeholder="especialidade"> 
+    	<span th:if="${#fields.hasErrors('especialidade')}" th:errors="*{especialidade}" class="textdanger"></span>
+    	<br>
+    	
+    	
+    </form>
 </body>
 
 </html>

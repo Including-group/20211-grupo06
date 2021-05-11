@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.model.Medico;
@@ -32,7 +33,8 @@ public class MedicoServicoInterface implements MedicoServico {
 	public Medico findById(Long id) {
 		return repository.findById(id).get();
 	}
-
+	
+	@Transactional
 	public ModelAndView saveOrUpdate(Medico medico) {
 		ModelAndView modelAndView = new ModelAndView("consultarMedico");
 		try {
@@ -41,7 +43,7 @@ public class MedicoServicoInterface implements MedicoServico {
 				medico.setEndereco(endereco);
 				repository.save(medico);
 				logger.info(">>>>>> 4. comando save executado  ");
-				modelAndView.addObject("clientes", repository.findAll());
+				modelAndView.addObject("medico", repository.findAll());
 			}
 		} catch (Exception e) {
 			modelAndView.setViewName("cadastrarMedico");

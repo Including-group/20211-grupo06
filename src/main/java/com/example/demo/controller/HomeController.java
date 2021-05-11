@@ -20,14 +20,4 @@ public class HomeController {
 	public ModelAndView error() {
 		return new ModelAndView("error");
 	}
-
-	@GetMapping("/medico/cadastrar")
-	public ModelAndView cadastrarAluno() {
-		return new ModelAndView("cadastrarMedico");
-	}
-
-	@GetMapping("/paciente/cadastrar")
-	public ModelAndView cadastrarLivro() {
-		return new ModelAndView("cadastrarPaciente");
-	}
 }

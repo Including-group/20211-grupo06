@@ -42,9 +42,13 @@
 							<th>ID</th>
 							<th>CPF</th>
 							<th>Nome</th>
-							<th>e-mail</th>
+							<th>E-mail</th>
 							<th>CEP</th>
-							<th>Endereço</th>
+							<th>Endereço Pessoal</th>
+							<th>Endereço Hospital</th>
+							<th>Carga Horaria</th>
+							<th>Especialidade</th>
+							<th>Ações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -55,6 +59,9 @@
 							<td th:text="${medico.email}"></td>
 							<td th:text="${medico.cep}"></td>
 							<td th:text="${medico.endereco}"></td>
+							<td th:text="${medico.logradouroHospital}"></td>
+							<td th:text="${medico.cargaHoraria}"></td>
+							<td th:text="${medico.especialidade}"></td>
 							<td>
 								<div class="btn-group pull-right">
 									<a class="btn btn-sm btn-primary"

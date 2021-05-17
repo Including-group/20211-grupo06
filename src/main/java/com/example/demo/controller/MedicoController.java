@@ -58,8 +58,8 @@ public class MedicoController {
 		if (result.hasErrors()) {
 			mv.setViewName("cadastrarMedico");
 		} else {
-			System.out.println("MEDICOOOOOOOOOOOOOOOOOOO:" + medico);
 			mv = servico.saveOrUpdate(medico);
+			mv.setViewName("consultarMedico");
 		}
 		return mv;
 	}
@@ -72,12 +72,15 @@ public class MedicoController {
 			return new ModelAndView("atualizarMedico");
 		} 
 		
-		// programacao defensiva - deve-se verificar se o Cliente existe antes de atualizar
 		Medico umMedico = servico.findById(id); 
 		umMedico.setCpf(medico.getCpf()); 
 		umMedico.setNome(medico.getNome()); 
 		umMedico.setEmail(medico.getEmail()); 
 		umMedico.setCep(medico.getCep());
+		umMedico.setEndereco(medico.getEndereco());
+		umMedico.setCargaHoraria(medico.getCargaHoraria());
+		umMedico.setLogradouroHospital(medico.getLogradouroHospital());
+		umMedico.setEspecialidade(medico.getEspecialidade());
 		mv = servico.saveOrUpdate(umMedico);
 		
 		mv.setViewName("consultarMedico");

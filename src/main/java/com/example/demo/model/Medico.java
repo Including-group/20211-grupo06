@@ -24,7 +24,7 @@ public class Medico{
 	@NotNull
 	private String email;
 	private String logradouroHospital;
-	private String cargaHoraria;
+	private int cargaHoraria;
 	private String endereco;
 	private String cep;
 	private String especialidade;
@@ -88,11 +88,11 @@ public class Medico{
 		this.logradouroHospital = logradouroHospital;
 	}
 
-	public String getCargaHoraria() {
+	public int getCargaHoraria() {
 		return cargaHoraria;
 	}
 
-	public void setCargaHoraria(String cargaHoraria) {
+	public void setCargaHoraria(int cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
 
@@ -122,9 +122,8 @@ public class Medico{
 
 	@Override
 	public String toString() {
-		return "Medico [cpf=" + cpf + ", crm=" + crm + ", nome=" + nome + ", email=" + email + ", logradouroHospital="
-				+ logradouroHospital + ", cargaHoraria=" + cargaHoraria + ", endereco=" + endereco + ", cep=" + cep
-				+ "]";
+		return "Medico [id=" + id + ", cpf=" + cpf + ", crm=" + crm + ", nome=" + nome + ", email=" + email
+				+ ", logradouroHospital=" + logradouroHospital + ", cargaHoraria=" + cargaHoraria + ", endereco="
+				+ endereco + ", cep=" + cep + ", especialidade=" + especialidade + "]";
 	}
-
 }

@@ -17,17 +17,16 @@
 
 <body>
     <h1> Cadastrar mÃ©dico </h1>
-    <form action="#" th:action="@{/sig/medicos}" th:object="${medico}" method="post" class="col-md-6">
+    <form action="#" th:action="@{/sig/medicos}" th:object="${medico}" method="post" class="col-md-4">
     	
     	<label for="Nome" class="col-form-label">Nome:</label>
-    	<input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="nome"> 
-    	<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="textdanger"></span>
-    	<br>
+	    <input type="text" th:field="*{nome}" class="form-control" id="nome" placeholder="Nome completo"> 
+	    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="textdanger"></span>
+	    	
+	    <label for="cpf" class="col-form-label">CRM:</label>
+	    <input type="text" th:field="*{crm}" class="form-control" id="crm" placeholder="CRM"> 
+	    <span th:if="${#fields.hasErrors('crm')}" th:errors="*{crm}" class="textdanger"></span>
     	
-    	<label for="cpf" class="col-form-label">CRM:</label>
-    	<input type="text" th:field="*{crm}" class="form-control" id="crm" placeholder="CRM"> 
-    	<span th:if="${#fields.hasErrors('crm')}" th:errors="*{crm}" class="textdanger"></span>
-    	<br>
     	
     	<label for="cpf" class="col-form-label">CPF:</label>
     	<input type="text" th:field="*{cpf}" class="form-control" id="cpf" placeholder="CPF"> 
@@ -44,28 +43,22 @@
     	<span th:if="${#fields.hasErrors('cep')}" th:errors="*{cep}" class="textdanger"></span>
     	<br>
     	
-    	<label for="endereco" class="col-form-label">Endereço Pessoal:</label>
-    	<input type="text"  th:field="*{endereco}" class="form-control" id="cep" placeholder="Endereco"> 
-    	<span th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}" class="textdanger"></span>
-    	<br>
-    	
-    	<label for="logradouro" class="col-form-label">Logradouro Hospital:</label>
-    	<input type="text"  th:field="*{logradouroHospital}" class="form-control" id="logradouro" placeholder="logradouro"> 
+    	<label for="logradouro" class="col-form-label">Endereço do Hospital:</label>
+    	<input type="text"  th:field="*{logradouroHospital}" class="form-control" id="logradouro" placeholder="Endereço do Hospital"> 
     	<span th:if="${#fields.hasErrors('logradouroHospital')}" th:errors="*{cep}" class="textdanger"></span>
     	<br>
     	
-    	<label for="cargaHoraria" class="col-form-label">Carga Horária:</label>
-    	<input type="text"  th:field="*{cargaHoraria}" class="form-control" id="cargaHoraria" placeholder="cargaHoraria"> 
+    	<label for="cargaHoraria" class="col-form-label">Carga Horária em horas:</label>
+    	<input type="number"  th:field="*{cargaHoraria}" class="form-control" id="cargaHoraria" placeholder="cargaHoraria"> 
     	<span th:if="${#fields.hasErrors('cargaHoraria')}" th:errors="*{cep}" class="textdanger"></span>
     	<br>
     	
-    	<!-- <label for="especialidade" class="col-form-label">Especialidade</label>
-    	<input type="text" class="form-control" id="especialidade" placeholder="especialidade">
+    	 <label for="especialidade" class="col-form-label">Especialidade</label>
+    	<input type="text" th:field="*{especialidade}" class="form-control" id="especialidade" placeholder="especialidade">
     	<span th:if="${#fields.hasErrors('especialidade')}" th:errors="*{especialidade}" class="textdanger"></span>
-    	<br> -->
+    	<br>
     	
-    	<input type="submit" class="btn btn-primary" value="Cadastrar médico"> 
-    	
+    	<input type="submit" class="btn btn-primary" value="Cadastrar médico">
     </form>
 </body>
 

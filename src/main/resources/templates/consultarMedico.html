@@ -17,6 +17,13 @@
 </head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
+<script>
+	window.onload = function () {
+		setTimeout(() => {
+			window.open("/sig/medicos");			
+		}, 1000)
+	}
+</script>
 <body>
 	<div class="panel panel-default" style="margin: 10px">
 		<div class="panel-heading">
@@ -51,7 +58,7 @@
 							<td>
 								<div class="btn-group pull-right">
 									<a class="btn btn-sm btn-primary"
-										th:href="@{/sig/medico/{cpf}(cpf=${medico.cpf})}">Editar</a>
+										th:href="@{/sig/medico/editView/{cpf}(cpf=${medico.cpf})}">Editar</a>
 									<a class="delete btn btn-sm btn-danger"
 										th:href="@{/sig/medico/{id}(id=${medico.id})}">Excluir</a>
 								</div>

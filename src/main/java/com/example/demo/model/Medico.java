@@ -27,6 +27,7 @@ public class Medico{
 	private String cargaHoraria;
 	private String endereco;
 	private String cep;
+	private String especialidade;
 
 	public Medico() {
 
@@ -109,6 +110,14 @@ public class Medico{
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	
+	public String getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
 	}
 
 	@Override

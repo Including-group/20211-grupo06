@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import javax.validation.Valid;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class MedicoController {
 		return mv;
 	}
 
-	@GetMapping("/medico/{cpf}")
+	@GetMapping("/medico/editView/{cpf}")
 	public ModelAndView retornaFormParaEditarMedico(@PathVariable("cpf") String cpf) {
 		ModelAndView mv = new ModelAndView("atualizarMedico");
 		mv.addObject("medico", servico.findByCpf(cpf));
@@ -65,7 +64,7 @@ public class MedicoController {
 		return mv;
 	}
 
-	@PostMapping("/medicos/{id}")
+	@PostMapping("/medico/edit/{id}")
 	public ModelAndView atualizaMedico(@PathVariable("id") Long id, @Valid Medico medico, BindingResult result) {
 		ModelAndView mv = new ModelAndView("consultarMedico");
 		if (result.hasErrors()) {
@@ -81,6 +80,7 @@ public class MedicoController {
 		umMedico.setCep(medico.getCep());
 		mv = servico.saveOrUpdate(umMedico);
 		
+		mv.setViewName("consultarMedico");
 		return mv; 
 	}
 }

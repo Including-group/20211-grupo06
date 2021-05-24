@@ -55,13 +55,18 @@ public class MedicoController {
 	public ModelAndView save(Medico medico, BindingResult result) {
 		ModelAndView mv = new ModelAndView("consultarMedico");
 		
-		if (result.hasErrors()) {
-			mv.setViewName("cadastrarMedico");
-		} else {
-			mv = servico.saveOrUpdate(medico);
-			mv.setViewName("consultarMedico");
+		try {
+			if (result.hasErrors()) {
+				mv.setViewName("cadastrarMedico");
+			} else {
+				mv = servico.saveOrUpdate(medico);
+				mv.setViewName("consultarMedico");
+			}
+			return mv;
+		} catch (Exception e) {
+			return  new ModelAndView("cadastrarMedico");
 		}
-		return mv;
+		
 	}
 
 	@PostMapping("/medico/edit/{id}")

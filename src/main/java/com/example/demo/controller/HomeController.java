@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	@GetMapping("/")
 	public ModelAndView menu() {
-		return new ModelAndView("paginaMenu");
+		return new ModelAndView("consultarMedico");
 	}
 
 	@GetMapping("/login")

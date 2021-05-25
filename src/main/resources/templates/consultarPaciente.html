@@ -46,6 +46,7 @@
 								<th>CEP</th>
 								<th>Endereço</th>
 								<th>Observacao</th>
+								<th>Consulta</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -58,6 +59,12 @@
 								<td th:text="${paciente.cep}"></td>
 								<td th:text="${paciente.endereco}"></td>
 								<td th:text="${paciente.observacao}"></td>
+								<td>
+									<div class="btn-group pull-right">
+										<a class="btn btn-sm btn-success"
+											th:href="@{/sig/consulta/{cpf}(cpf=${paciente.cpf})}">Adicionar Consulta</a> 
+									</div>
+								</td>
 								<td>
 									<div class="btn-group pull-right">
 										<a class="btn btn-sm btn-primary"

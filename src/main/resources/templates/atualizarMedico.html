@@ -19,6 +19,29 @@
 	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
 	crossorigin="anonymous">
 </head>
+
+<script>
+
+function alertes() {
+	const form = document.getElementById('form');
+	
+	const cpf = document.getElementById("cpf").value;
+	if(cpf.length < 11 || cpf.length > 11) {
+		alert('O CPF deve conter 11 caracteres.');
+		return;
+	}
+	
+	const cep = document.getElementById("cep").value;
+	if(cep.length < 9 || cep.length > 9) {
+		alert('o CEP deve conter 9 caracteres.');
+		return;
+	}
+	
+	form.submit();
+}
+
+</script>
+
 <body>
 	<div class="container my-5">
 		<br />
@@ -27,6 +50,7 @@
 			<div class="card-body">
 				<div class="col-md-8">
 					<form action="#"
+						id="form"
 						th:action="@{/sig/medico/edit/{id} (id=${medico.id}) }"
 						th:object="${medico}" method="post">
 						
@@ -68,7 +92,7 @@
 				    	<span th:if="${#fields.hasErrors('especialidade')}" th:errors="*{especialidade}" class="textdanger"></span>
 						
 						<div class="form-group col-md-8">
-							<input type="submit" class="btn btn-primary" value="Atualizar Cliente" onclick="consulta();"> 
+							<input  class="btn btn-primary" value="Atualizar Cliente" onclick="alertes()"> 
 							<input type="button" class="btn btn-primary" value="ConsultarMedico" onclick="consulta();">
 						</div>
 					</form>

@@ -60,6 +60,7 @@ public class PacienteController {
 				mv.setViewName("cadastrarPaciente");
 			} else {
 				mv = servico.saveOrUpdate(paciente);
+				mv.addObject("pacientes", servico.findAll());
 				mv.setViewName("consultarPaciente");
 			}
 			return mv;

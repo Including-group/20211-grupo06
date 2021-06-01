@@ -40,13 +40,23 @@ function alertes() {
 	    	
 
 		    <label for="cpf" class="col-form-label">CPF do paciente: *</label>
-	    	<input type="text" th:field="*{cpf}" max="11" class="form-control" id="cpf" placeholder="CPF" disabled> 
+	    	<input type="text" th:field="*{cpf}" max="11" class="form-control" id="cpf" placeholder="CPF"> 
 	    	<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="textdanger"></span>
+	    	<br>
+
+			<label for="cpf" class="col-form-label">Medico: *</label>
+	    	<select  th:field="*{crmMedico}" class="form-control" id="crmMedico" placeholder="Medico">
+	    		<option th:each="medico : ${medicos}" th:text="${medico.nome}" th:value="${medico.crm}"> </option>
+	    	</select> 
+	    	<span th:if="${#fields.hasErrors('horarioConsulta')}" th:errors="*{horarioConsulta}" class="textdanger"></span>
 	    	<br>
 
 
  			<label for="cpf" class="col-form-label">Horario da Consulta: *</label>
-	    	<input type="text" th:field="*{horarioConsulta}" max="11" class="form-control" id="horarioConsulta" placeholder="Horario da Consulta"> 
+	    	<select th:field="*{horarioConsulta}" class="form-control" id="horarioConsulta" placeholder="Horario da Consulta">
+	    		<option value="manha">Manhã</option>
+	    		<option value="tarde">Tarde</option>
+	    	</select> 
 	    	<span th:if="${#fields.hasErrors('horarioConsulta')}" th:errors="*{horarioConsulta}" class="textdanger"></span>
 	    	<br>
 

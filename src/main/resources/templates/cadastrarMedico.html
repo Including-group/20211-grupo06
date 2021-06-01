@@ -69,7 +69,7 @@ function alertes() {
 	    	<br>
 	    	
 	    	<label for="logradouro" class="col-form-label">Endereço do Hospital: *</label>
-	    	<input type="text"  th:field="*{logradouroHospital}" class="form-control" id="logradouro" placeholder="Endere�o do Hospital"> 
+	    	<input type="text"  th:field="*{logradouroHospital}" class="form-control" id="logradouro" placeholder="Endereço do Hospital"> 
 	    	<span th:if="${#fields.hasErrors('logradouroHospital')}" th:errors="*{cep}" class="textdanger"></span>
 	    	<br>
 	    	
@@ -79,7 +79,7 @@ function alertes() {
 	    	<br>
 	    	
 	    	 <label for="especialidade" class="col-form-label">Especialidade: *</label>
-	    	<input type="text" th:field="*{especialidade}" class="form-control" id="especialidade" placeholder="especialidade">
+	    	<input type="text" th:field="*{especialidade}" class="form-control" id="especialidade" placeholder="Especialidade">
 	    	<span th:if="${#fields.hasErrors('especialidade')}" th:errors="*{especialidade}" class="textdanger"></span>
 	    	<br>
 	    	

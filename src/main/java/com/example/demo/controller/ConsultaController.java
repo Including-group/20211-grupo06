@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.service.ConsultaServico;
 import com.example.demo.service.MedicoServico;
 import com.example.demo.model.Consulta;
-import com.example.demo.model.Medico;
 
 @Controller
 @RequestMapping(path = "/sig")
@@ -23,11 +22,13 @@ public class ConsultaController {
 	Logger logger = LogManager.getLogger(ConsultaController.class);
 	@Autowired
 	ConsultaServico servico;
+	@Autowired
+	MedicoServico mServico;
 
 	@GetMapping("/consultas")
 	public ModelAndView retornaFormDeConsultaTodosMedicos() {
 		ModelAndView mv = new ModelAndView("consultarConsulta");
-		mv.addObject("medicos", servico.findAll());
+		mv.addObject("consultas", servico.findAll());
 		return mv;
 	}
 
@@ -36,23 +37,25 @@ public class ConsultaController {
 		ModelAndView mv = new ModelAndView("cadastrarConsulta");
 		mv.addObject("consulta", consulta);
 		mv.addObject("cpfPaciente", cpfPaciente);
+		mv.addObject("medicos", mServico.findAll());
 		return mv;
 	}
 
 	@PostMapping("/consultas")
 	public ModelAndView save(Consulta consulta, BindingResult result) {
-		ModelAndView mv = new ModelAndView("consultarMedico");
+		ModelAndView mv = new ModelAndView("consultarConsulta");
 		
 		try {
 			if (result.hasErrors()) {
-				mv.setViewName("cadastrarMedico");
+				mv.setViewName("cadastrarConsulta");
 			} else {
 				mv = servico.saveOrUpdate(consulta);
-				mv.setViewName("consultarMedico");
+				mv.addObject("consultas	", servico.findAll());
+				mv.setViewName("consultarConsulta");
 			}
 			return mv;
 		} catch (Exception e) {
-			return  new ModelAndView("cadastrarMedico");
+			return  new ModelAndView("cadastrarConsulta");
 		}
 	}
 	

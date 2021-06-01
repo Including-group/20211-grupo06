@@ -16,6 +16,7 @@ public class Consulta{
 	@NotNull
 	@Size(min = 11, max = 11, message = "CPF deve ter 11 caracteres") 
 	private String cpf;
+	private String crmMedico;
 	private String horarioConsulta;
 	private String dataConsulta;
 
@@ -50,6 +51,14 @@ public class Consulta{
 
 	public void setHorarioConsulta(String horarioConsulta) {
 		this.horarioConsulta = horarioConsulta;
+	}
+
+	public String getCrmMedico() {
+		return crmMedico;
+	}
+
+	public void setCrmMedico(String crmMedico) {
+		this.crmMedico = crmMedico;
 	}
 
 	public String getDataConsulta() {

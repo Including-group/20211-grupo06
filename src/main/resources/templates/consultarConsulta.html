@@ -18,6 +18,7 @@
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
+
 <body>
 	<header th:replace="fragments/header :: menuSuperior"> <div>header</div> </header>
 	<div class="container my-5 col-md-11">
@@ -38,7 +39,7 @@
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>CPF</th>
+								<th>CPF do paciente</th>
 								<th>CRM</th>
 								<th>Data consulta</th>
 								<th>Periodo Consulta</th>
@@ -50,12 +51,12 @@
 								<td th:text="${consulta.id}"></td>
 								<td th:text="${consulta.cpf}"></td>
 								<td th:text="${consulta.crmMedico}"></td>
-								<td th:text="${consulta.dataConsulta}"></td>
+								<td th:text="${consulta.dataConsulta}" class="dataConsulta"></td>
 								<td th:text="${consulta.horarioConsulta}"></td>
 								<td>
 									<div class="btn-group pull-right">
 										<a class="btn btn-sm btn-primary"
-											th:href="@{/sig/consulta/editView/{cpf}(cpf=${consulta.cpf})}">Editar</a>
+											th:href="@{/sig/consulta/editView/{cpf}(id=${consulta.id})}">Editar</a>
 										<a class="delete btn btn-sm btn-danger"
 											th:href="@{/sig/consulta/{id}(id=${consulta.id})}">Excluir</a>
 									</div>

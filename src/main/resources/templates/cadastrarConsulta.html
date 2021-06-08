@@ -38,6 +38,7 @@ function alertes() {
     	<h1> Agendar Consulta</h1>
 	    <form id="form" action="#" th:action="@{/sig/consultas}" th:object="${consulta}" method="post" class="col-md-4">
 	    	
+	    	<p th:if="${message}" class="textdanger errorMessage">Este medico ja possui consulta neste dia e periodo.</p>
 
 		    <label for="cpf" class="col-form-label">CPF do paciente: *</label>
 	    	<input type="text" th:field="*{cpf}" max="11" class="form-control" id="cpf" placeholder="CPF"> 
@@ -54,8 +55,8 @@ function alertes() {
 
  			<label for="cpf" class="col-form-label">Horario da Consulta: *</label>
 	    	<select th:field="*{horarioConsulta}" class="form-control" id="horarioConsulta" placeholder="Horario da Consulta">
-	    		<option value="manha">Manhã</option>
-	    		<option value="tarde">Tarde</option>
+	    		<option value="Manhã">Manhã</option>
+	    		<option value="Tarde">Tarde</option>
 	    	</select> 
 	    	<span th:if="${#fields.hasErrors('horarioConsulta')}" th:errors="*{horarioConsulta}" class="textdanger"></span>
 	    	<br>
@@ -70,6 +71,14 @@ function alertes() {
 	    	<input onclick="alertes()" class="btn btn-primary" value="Agendar Consulta" disable>
 	    </form>
 	</div>
+	
+	<style>
+		.errorMessage {
+			font-size: 16px;
+			color: #d9534f;
+			font-weight: bold;
+		}
+	</style>
 </body>
 
 </html>

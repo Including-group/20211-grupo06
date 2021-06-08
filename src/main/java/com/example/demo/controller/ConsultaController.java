@@ -50,8 +50,6 @@ public class ConsultaController {
 				mv.setViewName("cadastrarConsulta");
 			} else {
 				mv = servico.saveOrUpdate(consulta);
-				mv.addObject("consultas	", servico.findAll());
-				mv.setViewName("consultarConsulta");
 			}
 			return mv;
 		} catch (Exception e) {

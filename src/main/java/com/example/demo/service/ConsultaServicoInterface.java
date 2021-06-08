@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.Iterator;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class ConsultaServicoInterface implements ConsultaServico {
 	Logger logger = LogManager.getLogger(ConsultaServicoInterface.class);
 	@Autowired
 	private ConsultaRepository repository;
+	String existConsultaError = "Este medico ja possui consulta neste dia e periodo.";
+	@Autowired
+	MedicoServico mServico;
 
 	public Iterable<Consulta> findAll() {
 		return repository.findAll();
@@ -37,12 +42,35 @@ public class ConsultaServicoInterface implements ConsultaServico {
 	public ModelAndView saveOrUpdate(Consulta consulta) {
 		ModelAndView modelAndView = new ModelAndView("consultarConsulta");
 		try {
+			Iterable<Consulta> consultas = repository.findAll();
+			Iterator<Consulta> itr =  consultas.iterator();
+			
+			while(itr.hasNext()) {
+				Consulta cosultatinha = itr.next();
+				String dataC = cosultatinha.getDataConsulta();
+				String crmC = cosultatinha.getCrmMedico();
+				String periodoC = cosultatinha.getHorarioConsulta();
+				
+				if(dataC.equalsIgnoreCase(consulta.getDataConsulta()) 
+						&& crmC.equalsIgnoreCase(consulta.getCrmMedico()) 
+						&& periodoC.equalsIgnoreCase(consulta.getHorarioConsulta())) {
+					consultaExist();
+				}
+			}
+			
 			repository.save(consulta);
 			logger.info(">>>>>> 4. comando save executado  ");
-			modelAndView.addObject("medico", repository.findAll());
+			modelAndView.addObject("consultas", repository.findAll());
+			modelAndView.setViewName("consultarConsulta");
 		} catch (Exception e) {
 			modelAndView.setViewName("cadastrarConsulta");
-			if (e.getMessage().contains("could not execute statement")) {
+			if(e.getMessage().contains(existConsultaError)) {
+				modelAndView.addObject("message", existConsultaError);
+				modelAndView.addObject("cpfPaciente", consulta.getCpf());
+				modelAndView.addObject("medicos", mServico.findAll());
+				modelAndView.setViewName("cadastrarConsulta");
+				return modelAndView;
+			} else if (e.getMessage().contains("could not execute statement")) {
 				modelAndView.addObject("message", "Dados invalidos - consulta já cadastrado.");
 				logger.info(">>>>>> 5. consulta ja cadastrado ==> " + e.getMessage());
 			} else {
@@ -57,6 +85,11 @@ public class ConsultaServicoInterface implements ConsultaServico {
 	public String obtemEndereco(String cep) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void consultaExist() throws IllegalAccessException {
+		logger.info(">>>>>> 5. Erro consutla ja marcada");
+		throw new IllegalAccessException(existConsultaError);
 	}
 
 }

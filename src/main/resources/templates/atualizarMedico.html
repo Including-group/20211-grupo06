@@ -6,7 +6,7 @@
 <title>Atualizar medico</title>
 <script type="text/javascript">
 	function consulta() {
-		window.open("/sig/medicos");
+		window.location = "/sig/medicos"; 
 	}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,9 +91,10 @@ function alertes() {
 				    	<input type="text" th:field="*{especialidade}" class="form-control" id="especialidade" placeholder="especialidade">
 				    	<span th:if="${#fields.hasErrors('especialidade')}" th:errors="*{especialidade}" class="textdanger"></span>
 						
+						<br/>
 						<div class="form-group col-md-8">
-							<input  class="btn btn-primary" value="Atualizar Cliente" onclick="alertes()"> 
-							<input type="button" class="btn btn-primary" value="ConsultarMedico" onclick="consulta();">
+							<input type="button" class="btn btn-danger" value="Cancelar" onclick="consulta();">
+							<input  class="btn btn-primary" value="Atualizar Medico" onclick="alertes()"> 
 						</div>
 					</form>
 				</div>

@@ -24,7 +24,7 @@ public class PacienteController {
 	@GetMapping("/pacientes")
 	public ModelAndView retornaFormDeConsultaTodosPacientes() {
 		ModelAndView mv = new ModelAndView("consultarPaciente");
-		mv.addObject("pacientes", servico.findAll());
+		mv.addObject("pacientes", servico.findAll());	
 		return mv;
 	}
 
@@ -88,6 +88,7 @@ public class PacienteController {
 		umPaciente.setObservacao(paciente.getObservacao());
 		mv = servico.saveOrUpdate(umPaciente);
 		
+		mv.addObject("pacientes", servico.findAll());
 		mv.setViewName("consultarPaciente");
 		return mv; 
 	}

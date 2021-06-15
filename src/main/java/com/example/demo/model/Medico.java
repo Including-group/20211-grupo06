@@ -18,6 +18,7 @@ public class Medico{
 	@Column(unique = true)
 	private String cpf;
 	@NotNull
+	@Column(unique = true)
 	private String crm;
 	@NotNull
 	private String nome;

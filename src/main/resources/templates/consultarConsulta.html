@@ -25,8 +25,9 @@
 		<div class="panel panel-default" style="margin: 10px">
 			<div class="panel-heading">
 				<div class="row">
-					<h5 class="panel-title">Lista de consultas</h5>	
+					<h5 class="panel-title" data-toggle="tooltip" data-placement="top" title="Para agendar uma nova consulta é necessario após cadastrar um paciente, agendar a consulta na listagem de pacientes.">Lista de consultas</h5>
 				</div>
+				
 				<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
 					rel="stylesheet" />
 				<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
@@ -56,9 +57,9 @@
 								<td>
 									<div class="btn-group pull-right">
 										<a class="btn btn-sm btn-primary"
-											th:href="@{/sig/consulta/editView/{cpf}(id=${consulta.id})}">Editar</a>
+											th:href="@{/sig/consulta/editView/{id}(id=${consulta.id})}">Editar</a>
 										<a class="delete btn btn-sm btn-danger"
-											th:href="@{/sig/consulta/{id}(id=${consulta.id})}">Excluir</a>
+											th:href="@{/sig/consultaD/{id}(id=${consulta.id})}">Excluir</a>
 									</div>
 								</td>
 							</tr>

@@ -89,6 +89,7 @@ public class MedicoController {
 		umMedico.setEspecialidade(medico.getEspecialidade());
 		mv = servico.saveOrUpdate(umMedico);
 		
+		mv.addObject("medicos", servico.findAll());
 		mv.setViewName("consultarMedico");
 		return mv; 
 	}

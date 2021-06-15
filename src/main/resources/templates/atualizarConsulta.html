@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Atualizar Paciente</title>
+<script type="text/javascript">
+	function consulta() {
+		window.location = "/sig/consultas"; 
+	}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container my-5">
+		<br />
+		<h3>Atualizar Consulta</h3>
+		<div class="card">
+			<div class="card-body">
+				<div class="col-md-8">
+					<form action="#"
+						th:action="@{/sig/consulta/edit/{id} (id=${consulta.id}) }"
+						th:object="${consulta}" method="post">
+						
+						<p th:if="${message}" class="textdanger errorMessage">Este medico ja possui consulta neste dia e periodo.</p>
+
+					    <label for="cpf" class="col-form-label">CPF do paciente: *</label>
+				    	<input type="text" th:field="*{cpf}" max="11" class="form-control" id="cpf" placeholder="CPF"> 
+				    	<span th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="textdanger"></span>
+				    	<br>
+			
+						<label for="cpf" class="col-form-label">Medico: *</label>
+				    	<select  th:field="*{crmMedico}" class="form-control" id="crmMedico" placeholder="Medico">
+				    		<option th:each="medico : ${medicos}" th:text="${medico.nome}" th:value="${medico.crm}"> </option>
+				    	</select> 
+				    	<span th:if="${#fields.hasErrors('horarioConsulta')}" th:errors="*{horarioConsulta}" class="textdanger"></span>
+				    	<br>
+			
+			
+			 			<label for="cpf" class="col-form-label">Horario da Consulta: *</label>
+				    	<select th:field="*{horarioConsulta}" class="form-control" id="horarioConsulta" placeholder="Horario da Consulta">
+				    		<option value="Manhã">Manhã</option>
+				    		<option value="Tarde">Tarde</option>
+				    	</select> 
+				    	<span th:if="${#fields.hasErrors('horarioConsulta')}" th:errors="*{horarioConsulta}" class="textdanger"></span>
+				    	<br>
+			
+			
+			 			<label for="cpf" class="col-form-label">Data da Consulta: *</label>
+				    	<input type="date" th:field="*{dataConsulta}" max="11" class="form-control" id="cpf" placeholder="Data da consulta">
+				    	<span th:if="${#fields.hasErrors('dataConsulta')}" th:errors="*{dataConsulta}" class="textdanger"></span>
+				    	<br>
+						
+						<div class="form-group col-md-8">
+							<input type="button" class="btn btn-danger" value="Cancelar" onclick="consulta();">
+							<input type="submit" class="btn btn-primary" value="Atualizar Consulta" onclick="consulta();"> 
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

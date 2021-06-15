@@ -6,7 +6,7 @@
 <title>Atualizar Paciente</title>
 <script type="text/javascript">
 	function consulta() {
-		window.open("/sig/pacientes");
+		window.location = "/sig/pacientes"; 
 	}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,9 +59,11 @@
 				    	<input type="text"  th:field="*{observacao}" class="form-control" id="observacao" placeholder="Observação"> 
 				    	<span th:if="${#fields.hasErrors('observacao')}" th:errors="*{observacao}" class="textdanger"></span>
 						
+						<br/>
+						
 						<div class="form-group col-md-8">
-							<input type="submit" class="btn btn-primary" value="Atualizar" onclick="consulta();"> 
-							<input type="button" class="btn btn-primary" value="Consultar Paciente" onclick="consulta();">
+							<input type="button" class="btn btn-danger" value="Cancelar" onclick="consulta();">
+							<input type="submit" class="btn btn-primary" value="Atualizar Paciente" onclick="consulta();"> 
 						</div>
 					</form>
 				</div>
